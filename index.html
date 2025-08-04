@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Byte10: A Steel Firewall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/assets/index.css" />
+  <script src="src/scripts/nmap_scenario1.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">Byte10 🔐</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#vault">Cyber Vault</a>
+      <a href="#resources">Resources</a>
+    </nav>
+  </header>
+  
+  <section id="about">
+    <h2>About Byte10</h2>
+    <p>
+      Byte10 is Genesee County’s cybersecurity initiative. We believe digital safety starts with awareness, curiosity, and daily practice.
+    </p>
+    <p>
+      <strong>Why Byte10?</strong><br />
+      8 = Byte: The building block of digital data.<br />
+      1 & 0 = I/O: The pulse of every system.<br />
+      Byte10 = Your daily mission to protect the 810.
+    </p>
+  </section>
+
+  <section class="hero">
+    
+    <div class="challenge-box">
+    <h2>🧠 ByteDrop #001: OS Detection</h2>
+    <p>You are attempting a cybersecurity network analysis. In your terminal, scan the IP address below to find what open ports and operating systems being used on the network!</p>
+  <p><strong>Task:</strong> Use <code>nmap -sV -O</code> on IP address <code>10.0.0.56</code> and see what OS pops up.</p>
+
+  <div class="terminal">
+    <div class="prompt">Byte10@FlintCityDefense:~$</div>
+    <input type="text" id="userInput" placeholder="nmap -sV -O 10.0.0.56" />
+    <button onclick="runCommand()">Run</button>
+    <pre id="output" class="console-output"></pre>
+  </div>
+
+  <button onclick="openPopup()">Learn More 📖</button>
+
+<div id="popup" class="popup-box">
+  <div class="popup-content">
+    <h3>🧠 What Just Happened</h3>
+    <p>
+      You used <code>nmap -sV -O</code> to scan the target IP <code>10.0.0.56</code>. Here's what each flag does:
+    </p>
+    <ul>
+      <li><strong>-sV</strong>: Detects service versions running on open ports</li>
+      <li><strong>-O</strong>: Attempts to identify the operating system</li>
+    </ul>
+    <p>
+      The scan revealed that the host is running <strong>Ubuntu Linux</strong> with services like <strong>OpenSSH</strong> and <strong>Apache</strong>. This information is crucial for tailoring further reconnaissance or penetration testing strategies.
+    </p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+</div>
+
+  </section>
+
+  <section id="vault">
+    <h2>Cyber Vault</h2>
+    <p>Explore past challenges and learn from previous missions.</p>
+    <!-- Placeholder for archived challenges -->
+    <ul>
+      <!--<li><strong>ByteDrop #000:</strong> Password Cracking Basics</li>-->
+    </ul>
+  </section>
+
+  <section id="resources">
+    <h2>Resources</h2>
+    <ul>
+      <li><a href="#">Cybersecurity Basics</a></li>
+      <li><a href="#">Phishing Awareness</a></li>
+      <li><a href="#">Password Hygiene Tips</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Byte10: A Steel Firewall — Powered by Genesee County</p>
+  </footer>
+
+  <script>
+  function showFeedback() {
+    document.getElementById('feedback').style.display = 'block';
+  }
+
+function openPopup() {
+  document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+    function checkAnswers() {
+    const selected = Array.from(document.querySelectorAll('input[name="flag"]:checked')).map(el => el.value);
+    const correct = ['domain', 'urgency', 'generic'];
+
+    const isCorrect = correct.every(flag => selected.includes(flag)) && selected.length === 3;
+
+    const feedback = document.getElementById('feedback');
+    feedback.style.display = 'block';
+
+    if (!isCorrect) {
+      feedback.innerHTML = `
+        <h3>🛡️ Almost There</h3>
+        <p>You selected: ${selected.join(', ')}</p>
+        <p>✅ The correct red flags were:</p>
+        <ul>
+          <li>Suspicious domain</li>
+          <li>Urgent language</li>
+          <li>Generic message</li>
+        </ul>
+        <p>Logos can be faked—don’t trust visuals alone!</p>
+      `;
+    }
+  }
+</script>
+
+<div id="popup" class="popup-box">
+  <div class="popup-content">
+    <h3>Thank you for clicking</h3>
+    <p>This link allowed us to steal your identity.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+</div>
+</body>
+</html>
