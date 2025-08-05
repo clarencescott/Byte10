@@ -33,37 +33,46 @@
     </p>
   </section>
 
-  <section class="hero">
+   <section class="hero">
     
     <div class="challenge-box">
-    <h2>🧠 ByteDrop #001: OS Detection</h2>
-    <p>You are attempting a cybersecurity network analysis. In your terminal, scan the IP address below to find what open ports and operating systems being used on the network!</p>
-  <p><strong>Task:</strong> Use <code>nmap -sV -O</code> on IP address <code>10.0.0.56</code> and see what OS pops up.</p>
+     <h2>🧠 ByteDrop #002: Web Server Recon</h2>
+      <p>You're investigating a suspicious web server. Use <code>nikto</code> to scan the target and uncover potential vulnerabilities or misconfigurations.</p>
+      <p><strong>Task:</strong> Run <code>nikto -h http://10.0.0.56</code> and review the findings.</p>
 
-  <div class="terminal">
-    <div class="prompt">Byte10@FlintCityDefense:~$</div>
-    <input type="text" id="userInput" placeholder="nmap -sV -O 10.0.0.56" />
-    <button onclick="runCommand()">Run</button>
-    <pre id="output" class="console-output"></pre>
-  </div>
+      <div class="terminal">
+        <div class="prompt">Byte10@FlintCityDefense:~$</div>
+        <input type="text" id="userInput" placeholder="nikto -h http://10.0.0.56" />
+        <button onclick="runNikto()">Run</button>
+        <pre id="output" class="console-output"></pre>
+      </div>
 
-  <button onclick="openPopup()">Learn More 📖</button>
+      <button onclick="openPopup()">Learn More 📖</button>
 
-<div id="popup" class="popup-box">
-  <div class="popup-content">
-    <h3>🧠 What Just Happened</h3>
-    <p>
-      You used <code>nmap -sV -O</code> to scan the target IP <code>10.0.0.56</code>. Here's what each flag does:
-    </p>
-    <ul>
-      <li><strong>-sV</strong>: Detects service versions running on open ports</li>
-      <li><strong>-O</strong>: Attempts to identify the operating system</li>
-    </ul>
-    <p>
-      The scan revealed that the host is running <strong>Ubuntu Linux</strong> with services like <strong>OpenSSH</strong> and <strong>Apache</strong>. This information is crucial for tailoring further reconnaissance or penetration testing strategies.
-    </p>
-    <button onclick="closePopup()">Close</button>
-  </div>
+      <div id="popup" class="popup-box" style="display:none;">
+        <div class="popup-content">
+          <h3>🧠 What Just Happened</h3>
+          <p>
+            You used <code>nikto</code>, a powerful web server scanner, to analyze <code>http://10.0.0.56</code>. Here's what this command does:
+          </p>
+          <ul>
+            <li><strong>-h</strong>: Specifies the host to scan</li>
+            <li><strong>nikto</strong>: Checks for outdated software, dangerous files, and common misconfigurations</li>
+          </ul>
+          <p>
+            The scan may reveal issues like:
+          </p>
+          <ul>
+            <li>Outdated Apache version with known exploits</li>
+            <li>Exposed admin interfaces or test pages</li>
+            <li>Directory listing enabled</li>
+            <li>Missing security headers</li>
+          </ul>
+          <p>
+            Nikto is a reconnaissance tool—not stealthy, but incredibly useful for quick assessments. It's often used in the early stages of penetration testing to identify low-hanging fruit that attackers could exploit.
+          </p>
+          <button onclick="closePopup()">Close</button>
+        </div>
 </div>
 
 </div>
@@ -76,6 +85,7 @@
     <!-- Placeholder for archived challenges -->
     <ul>
       <!--<li><strong>ByteDrop #000:</strong> Password Cracking Basics</li>-->
+    <li><strong>ByteDrop #001:</strong> <a href="vault/001.html">NMAP - OS Detection</a></li>
     </ul>
   </section>
 
@@ -93,41 +103,34 @@
   </footer>
 
   <script>
-  function showFeedback() {
-    document.getElementById('feedback').style.display = 'block';
-  }
-
-function openPopup() {
-  document.getElementById("popup").style.display = "block";
-}
-
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
-    function checkAnswers() {
-    const selected = Array.from(document.querySelectorAll('input[name="flag"]:checked')).map(el => el.value);
-    const correct = ['domain', 'urgency', 'generic'];
-
-    const isCorrect = correct.every(flag => selected.includes(flag)) && selected.length === 3;
-
-    const feedback = document.getElementById('feedback');
-    feedback.style.display = 'block';
-
-    if (!isCorrect) {
-      feedback.innerHTML = `
-        <h3>🛡️ Almost There</h3>
-        <p>You selected: ${selected.join(', ')}</p>
-        <p>✅ The correct red flags were:</p>
-        <ul>
-          <li>Suspicious domain</li>
-          <li>Urgent language</li>
-          <li>Generic message</li>
-        </ul>
-        <p>Logos can be faked—don’t trust visuals alone!</p>
-      `;
+  function openPopup() {
+      document.getElementById("popup").style.display = "block";
     }
-  }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function runNikto() {
+      const input = document.getElementById("userInput").value.trim();
+      const output = document.getElementById("output");
+
+      if (input === "nikto -h http://10.0.0.56") {
+        output.textContent = `
+- Nikto v2.1.6
++ Target IP: 10.0.0.56
++ Target Hostname: 10.0.0.56
++ Server: Apache/2.4.29 (Ubuntu)
++ The X-XSS-Protection header is not defined. This could allow cross-site scripting attacks.
++ The site uses outdated Apache version with known vulnerabilities.
++ Found /test/: Test page accessible.
++ Retrieved robots.txt containing disallowed entries.
++ Scan completed in 12 seconds.
+        `;
+      } else {
+        output.textContent = "Invalid command. Try: nikto -h http://10.0.0.56";
+      }
+    }
 </script>
 
 <div id="popup" class="popup-box">
@@ -139,4 +142,5 @@ function closePopup() {
 </div>
 </body>
 </html>
+
 
