@@ -1,1 +1,72 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ByteDrop #001: OS Detection</title>
+  <link rel="shortcut icon" href="../byte10.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../byte10.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/index.css" />
+  <script src="/nmap_scenario1.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">Byte10 🔐</div>
+    <nav>
+      <a href="/index.html#about">About</a>
+      <a href="/index.html#vault">Cyber Vault</a>
+      <a href="/index.html#resources">Resources</a>
+    </nav>
+  </header>
+
+  <main><br><br><br>
+    <section class="challenge-box">
+      <h2>🧠 ByteDrop #001: OS Detection</h2>
+      <p>You are attempting a cybersecurity network analysis. In your terminal, scan the IP address below to find what open ports and operating systems are being used on the network!</p>
+      <p><strong>Task:</strong> Use <code>nmap -sV -O</code> on IP address <code>10.0.0.56</code> and see what OS pops up.</p>
+
+      <div class="terminal">
+        <div class="prompt">Byte10@FlintCityDefense:~$</div>
+        <input type="text" id="userInput" placeholder="nmap -sV -O 10.0.0.56" />
+        <button onclick="runCommand()">Run</button>
+        <pre id="output" class="console-output"></pre>
+      </div>
+
+      <button onclick="openPopup()">Learn More 📖</button>
+
+      <div id="popup" class="popup-box" style="display:none;">
+        <div class="popup-content">
+          <h3>🧠 What Just Happened</h3>
+          <p>
+            You used <code>nmap -sV -O</code> to scan the target IP <code>10.0.0.56</code>. Here's what each flag does:
+          </p>
+          <ul>
+            <li><strong>-sV</strong>: Detects service versions running on open ports</li>
+            <li><strong>-O</strong>: Attempts to identify the operating system</li>
+          </ul>
+          <p>
+            The scan revealed that the host is running <strong>Ubuntu Linux</strong> with services like <strong>OpenSSH</strong> and <strong>Apache</strong>. This information is crucial for tailoring further reconnaissance or penetration testing strategies.
+          </p>
+          <button onclick="closePopup()">Close</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Byte10: A Steel Firewall — Powered by Genesee County</p>
+  </footer>
+
+  <script>
+    function openPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
