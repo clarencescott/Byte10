@@ -1,8 +1,3 @@
-Sure thing! Here's the complete `README.md` file — fully formatted and ready for copy-paste into your project. It includes all three ByteDrop challenges, a clean structure, and a professional tone for public or internal use.
-
----
-
-```markdown
 # 🔐 ByteDrop Challenge Series
 
 Welcome to **ByteDrop**, a cybersecurity initiative built for Genesee County and beyond. Each challenge is designed to sharpen your digital defense skills through hands-on scenarios, terminal simulations, and real-world tools.
@@ -95,3 +90,4 @@ MIT License. Use, remix, and share freely — just don’t use it for evil. Inte
 ---
 
 Let me know if you'd like to add badges, contributor credits, or a setup guide for local development. I can also help you turn this into a landing page or GitHub Pages site if needed.
+
