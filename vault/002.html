@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ByteDrop #002: Web Server Recon</title>
+  <link rel="shortcut icon" href="../byte10.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../byte10.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/index.css" />
+  <script src="/nmap_scenario1.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">Byte10 🔐</div>
+    <nav>
+      <a href="/index.html#about">About</a>
+      <a href="/index.html#vault">Cyber Vault</a>
+      <a href="/index.html#resources">Resources</a>
+    </nav>
+  </header>
+
+  <main><br><br><br>
+    <section class="challenge-box">
+     <!--Input Previous Challenge Code below-->
+      <h2>🧠 ByteDrop #002: Web Server Recon</h2>
+      <p>You're investigating a suspicious web server. Use <code>nikto</code> to scan the target and uncover potential vulnerabilities or misconfigurations.</p>
+      <p><strong>Task:</strong> Run <code>nikto -h http://10.0.0.56</code> and review the findings.</p>
+
+      <div class="terminal">
+        <div class="prompt">Byte10@FlintCityDefense:~$</div>
+        <input type="text" id="userInput" placeholder="nikto -h http://10.0.0.56" />
+        <button onclick="runNikto()">Run</button>
+        <pre id="output" class="console-output"></pre>
+      </div>
+
+      <button onclick="openPopup()">Learn More 📖</button>
+
+      <div id="popup" class="popup-box" style="display:none;">
+        <div class="popup-content">
+          <h3>🧠 What Just Happened</h3>
+          <p>
+            You used <code>nikto</code>, a powerful web server scanner, to analyze <code>http://10.0.0.56</code>. Here's what this command does:
+          </p>
+          <ul>
+            <li><strong>-h</strong>: Specifies the host to scan</li>
+            <li><strong>nikto</strong>: Checks for outdated software, dangerous files, and common misconfigurations</li>
+          </ul>
+          <p>
+            The scan may reveal issues like:
+          </p>
+          <ul>
+            <li>Outdated Apache version with known exploits</li>
+            <li>Exposed admin interfaces or test pages</li>
+            <li>Directory listing enabled</li>
+            <li>Missing security headers</li>
+          </ul>
+          <p>
+            Nikto is a reconnaissance tool—not stealthy, but incredibly useful for quick assessments. It's often used in the early stages of penetration testing to identify low-hanging fruit that attackers could exploit.
+          </p>
+          <button onclick="closePopup()">Close</button>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Byte10: A Steel Firewall — Powered by Genesee County</p>
+  </footer>
+
+ <script>
+  function openPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function runNikto() {
+      const input = document.getElementById("userInput").value.trim();
+      const output = document.getElementById("output");
+
+      if (input === "nikto -h http://10.0.0.56") {
+        output.textContent = `
+- Nikto v2.1.6
++ Target IP: 10.0.0.56
++ Target Hostname: 10.0.0.56
++ Server: Apache/2.4.29 (Ubuntu)
++ The X-XSS-Protection header is not defined. This could allow cross-site scripting attacks.
++ The site uses outdated Apache version with known vulnerabilities.
++ Found /test/: Test page accessible.
++ Retrieved robots.txt containing disallowed entries.
++ Scan completed in 12 seconds.
+        `;
+      } else {
+        output.textContent = "Invalid command. Try: nikto -h http://10.0.0.56";
+      }
+    }
+</script>
+</body>
+</html>
