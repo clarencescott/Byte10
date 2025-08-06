@@ -87,7 +87,4 @@ Stay sharp. Stay curious. Stay secure.
 MIT License. Use, remix, and share freely — just don’t use it for evil. Intended for Genesee County residents mainly.
 ```
 
----
-
-Let me know if you'd like to add badges, contributor credits, or a setup guide for local development. I can also help you turn this into a landing page or GitHub Pages site if needed.
 
