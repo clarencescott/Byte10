@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ByteDrop #002: Web Server Recon</title>
+  <link rel="shortcut icon" href="../byte10.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../byte10.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/assets/index.css" />
+  <script src="/src/scripts/nmap_scenario1.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">Byte10 🔐</div>
+    <nav>
+      <a href="/index.html#about">About</a>
+      <a href="/index.html#vault">Cyber Vault</a>
+      <a href="/index.html#resources">Resources</a>
+    </nav>
+  </header>
+
+  <main><br><br><br>
+    <section class="challenge-box">
+     <!--Input Previous Challenge Code below-->
+      
+<h2>🐍 ByteDrop #003: Python Log Sniffer</h2>
+  <p><strong>Scenario:</strong> You’re investigating a log file for repeated IP addresses. The goal is to identify any IPs that show up more than once — a common sign of scanning or brute-force attempts.</p>
+
+  <p><strong>Challenge:</strong> Complete the Python script below to print all IPs that appear more than once.</p>
+
+  <pre><code class="python">
+log_data = [
+  "192.168.1.10 - login attempt",
+  "10.0.0.5 - login attempt",
+  "192.168.1.10 - login attempt",
+  "172.16.0.2 - login attempt",
+  "10.0.0.5 - login attempt"
+]
+
+ip_counts = {}
+
+for entry in log_data:
+    ip = entry.split(" ")[0]
+    # TODO: Count each IP address
+
+# TODO: Print IPs that appear more than once
+  </code></pre>
+
+  <p><strong>What should go in the two TODO sections?</strong></p>
+
+  <form id="pythonQuiz">
+    <label><input type="checkbox" name="code" value="count" /> ip_counts[ip] = ip_counts.get(ip, 0) + 1</label><br />
+    <label><input type="checkbox" name="code" value="print" /> for ip in ip_counts: if ip_counts[ip] > 1: print(ip)</label><br />
+    <label><input type="checkbox" name="code" value="wrong1" /> ip_counts = entry.count(ip)</label><br />
+    <label><input type="checkbox" name="code" value="wrong2" /> print(ip_counts.keys())</label><br />
+    <button type="button" onclick="checkPythonAnswers()">Submit 🔐</button>
+  </form>
+
+  <details class="tips">
+    <summary>🔽 Need help? Click to reveal tips</summary>
+    <ul>
+      <li>Use a dictionary to count how many times each IP appears.</li>
+      <li>Use `.get()` to safely increment values.</li>
+      <li>Loop through the dictionary to find values greater than 1.</li>
+    </ul>
+  </details>
+
+  <div id="feedback-python" class="feedback-box" style="display: none;">
+    <h3>✅ Correct Code</h3>
+    <pre><code class="python">
+ip_counts[ip] = ip_counts.get(ip, 0) + 1
+
+for ip in ip_counts:
+    if ip_counts[ip] > 1:
+        print(ip)
+    </code></pre>
+    <p>This script helps identify repeated IPs — useful for spotting brute-force attempts or scans in logs.</p>
+  </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Byte10: A Steel Firewall — Powered by Genesee County</p>
+  </footer>
+
+  <script>
+ //Import JavaScript from scenario file
+  </script>
+</body>
+</html>
