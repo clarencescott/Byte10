@@ -1,4 +1,4 @@
-/* Fonts and Base Styles */
+/* Base Styles & Fonts */
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
@@ -18,23 +18,24 @@ nav a:hover,
 .popup-content button:hover,
 .challenge-box button:hover,
 button:hover {
-  color: #FF4500;
+  color: #fcfcfc;
   background-color: #e03e00;
 }
 
 /* Header & Navigation */
 header {
   position: fixed;
+  padding: 1.5em;
   top: 0;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background-color: #000;
   border-bottom: 2px solid #00BFFF;
   z-index: 1000;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 nav {
@@ -54,13 +55,13 @@ nav a {
   font-size: 1.5rem;
 }
 
-/* Typography */
+/* 🖋 Typography */
 h2 {
   font-family: 'Orbitron', sans-serif;
   color: #00BFFF;
 }
 
-/* Hero Section */
+/* 🎯 Hero Section */
 .hero {
   background: url('binary-rain.gif') center center / cover no-repeat;
   padding: 4rem 2rem;
@@ -69,15 +70,15 @@ h2 {
   align-items: center;
 }
 
-/* Challenge Box */
+/* 🧪 Challenge Box */
 .challenge-box {
-  background-color: rgba(108, 117, 125, 0.95);
+  background-color: rgba(108, 117, 125, 0.575);
   border: 2px solid #00BFFF;
   padding: 2rem;
   max-width: 700px;
   margin: auto;
   border-radius: 8px;
-  box-shadow: 0 0 20px #FF4500;
+  box-shadow: 0 0 20px #912700;
 }
 
 .challenge-box textarea {
@@ -103,7 +104,7 @@ h2 {
   box-shadow: 0 0 10px #FF4500;
 }
 
-/* Hint & Tips */
+/* 💡 Hints & Tips */
 .hint {
   margin-top: 1rem;
   font-style: italic;
@@ -133,6 +134,7 @@ h2 {
   color: #fff;
 }
 
+/* Suspicious Link */
 .bad-link {
   color: #004cff;
   font-weight: bold;
@@ -142,7 +144,7 @@ h2 {
   margin-top: 1rem;
 }
 
-/* Popup */
+/* Popup Modal */
 .popup-box {
   display: none;
   position: fixed;
@@ -181,20 +183,23 @@ h2 {
   border-radius: 4px;
 }
 
-/* Sections */
+/* 📚 Sections */
 section {
   padding: 3rem 2rem;
 }
 
-#about,
+#about{
+  margin-top: 5rem;
+}
+
 #vault,
 #resources {
-  background-color: #6C757D;
-  margin-top: 2rem;
+  background-color: #6c757d65;
+  margin-top: 5rem;
   border-top: 4px solid #00BFFF;
 }
 
-/* Lists */
+/* 📋 Lists */
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -213,7 +218,7 @@ footer {
   color: #6C757D;
 }
 
-/* Scenario & Terminal */
+/* 💻 Terminal Simulation */
 .scenario {
   background-color: #111;
   color: #00BFFF;
@@ -241,9 +246,12 @@ input[type="text"] {
   color: #00FF00;
   font-family: 'Courier New', monospace;
   margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
 }
 
-/* Buttons */
+/* 🧨 Buttons */
 button {
   background-color: #FF4500;
   color: white;
@@ -254,7 +262,7 @@ button {
   border-radius: 4px;
 }
 
-/* Console Output */
+/* 🖥️ Console Output */
 .console-output {
   background-color: #000;
   color: #00FF00;
@@ -265,6 +273,7 @@ button {
   margin-top: 1rem;
 }
 
+/* 📄 Code Blocks */
 pre {
   background-color: #1a1a1a;
   padding: 1rem;
