@@ -9,10 +9,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Open+Sans&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="src/assets/index.css" />
   <script src="src/scripts/nmap_scenario1.js"></script>
+  <style>
+    .terminal-box {
+  background-color: #1e1e1e;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.prompt {
+  color: #00ffff;
+}
+
+.terminal-output {
+  background-color: #000;
+  padding: 0.5rem;
+  border: 1px solid #333;
+  margin-top: 0.5rem;
+  white-space: pre-wrap;
+}
+
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">Byte10 🔐</div>
+    <div class="logo">Byte10 🔐</div><br>
     <nav>
       <a href="#about">About</a>
       <a href="#vault">Cyber Vault</a>
@@ -21,9 +44,9 @@
   </header>
   
   <section id="about">
-    <h2>About Byte10</h2>
+    <h2>What Is Byte10 ?</h2>
     <p>
-      Byte10 is Genesee County’s cybersecurity initiative. We believe digital safety starts with awareness, curiosity, and daily practice.
+      Byte10 is Genesee County’s community ran cybersecurity initiative. We believe digital safety starts with awareness, curiosity, and daily practice.
     </p>
     <p>
       <strong>Why Byte10?</strong><br />
@@ -36,59 +59,44 @@
   <section class="hero">
     
     <div class="challenge-box">
-  <h2>🐍 ByteDrop #003: Python Log Sniffer</h2>
-  <p><strong>Scenario:</strong> You’re investigating a log file for repeated IP addresses. The goal is to identify any IPs that show up more than once — a common sign of scanning or brute-force attempts.</p>
+      <!--Challenge Input Beginning-->
+      
+ <h2>🔐 ByteDrop #004: Hash Hunt – Terminal Edition</h2>
+  <p><strong>Scenario:</strong> You’re investigating a compromised server. Use the simulated terminal below to open <code>auth_backup.txt</code> and find the hash.</p>
 
-  <p><strong>Challenge:</strong> Complete the Python script below to print all IPs that appear more than once.</p>
+  <div class="terminal-box">
+    <p><span class="prompt">hacker@byte10server:~$</span> nano auth_backup.txt</p>
+    <pre class="terminal-output">
++-----------------------------+
+| user:admin                  |
+| hash:5f4dcc3b5aa765d61d8327deb882cf99 |
++-----------------------------+
+    </pre>
+  </div>
 
-  <pre><code class="python">
-log_data = [
-  "192.168.1.10 - login attempt",
-  "10.0.0.5 - login attempt",
-  "192.168.1.10 - login attempt",
-  "172.16.0.2 - login attempt",
-  "10.0.0.5 - login attempt"
-]
+  <p><strong>Task:</strong> What is the original plaintext password that produced this MD5 hash?</p>
 
-ip_counts = {}
-
-for entry in log_data:
-    ip = entry.split(" ")[0]
-    # TODO: Count each IP address
-
-# TODO: Print IPs that appear more than once
-  </code></pre>
-
-  <p><strong>What should go in the two TODO sections?</strong></p>
-
-  <form id="pythonQuiz">
-    <label><input type="checkbox" name="code" value="count" /> ip_counts[ip] = ip_counts.get(ip, 0) + 1</label><br />
-    <label><input type="checkbox" name="code" value="print" /> for ip in ip_counts: if ip_counts[ip] > 1: print(ip)</label><br />
-    <label><input type="checkbox" name="code" value="wrong1" /> ip_counts = entry.count(ip)</label><br />
-    <label><input type="checkbox" name="code" value="wrong2" /> print(ip_counts.keys())</label><br />
-    <button type="button" onclick="checkPythonAnswers()">Submit 🔐</button>
+  <form id="hashQuiz">
+    <label><input type="radio" name="hash" value="password" /> password</label><br />
+    <label><input type="radio" name="hash" value="123456" /> 123456</label><br />
+    <label><input type="radio" name="hash" value="letmein" /> letmein</label><br />
+    <label><input type="radio" name="hash" value="qwerty" /> qwerty</label><br />
+    <button type="button" onclick="checkHashAnswer()">Submit 🔐</button>
   </form>
 
   <details class="tips">
     <summary>🔽 Need help? Click to reveal tips</summary>
     <ul>
-      <li>Use a dictionary to count how many times each IP appears.</li>
-      <li>Use `.get()` to safely increment values.</li>
-      <li>Loop through the dictionary to find values greater than 1.</li>
+      <li>MD5 hashes are commonly used but outdated.</li>
+      <li>Search the hash in public databases like CrackStation or Hashes.com.</li>
+      <li>Think like an attacker—what password would an admin likely use? <br>admin, password, root, toor, kali, 1234</li>
+      
     </ul>
   </details>
 
-  <div id="feedback-python" class="feedback-box" style="display: none;">
-    <h3>✅ Correct Code</h3>
-    <pre><code class="python">
-ip_counts[ip] = ip_counts.get(ip, 0) + 1
+  <div id="feedback-hash" class="feedback-box" style="display: none;"></div>
 
-for ip in ip_counts:
-    if ip_counts[ip] > 1:
-        print(ip)
-    </code></pre>
-    <p>This script helps identify repeated IPs — useful for spotting brute-force attempts or scans in logs.</p>
-  </div>
+      <!--Challenge Input Ending-->
     </div>
 
   </section>
@@ -101,56 +109,50 @@ for ip in ip_counts:
       <!--<li><strong>ByteDrop #000:</strong> Password Cracking Basics</li>-->
     <li><strong>ByteDrop #001:</strong> <a href="vault/001.html">NMAP - OS Detection</a></li>
     <li><strong>ByteDrop #002:</strong> <a href="vault/002.html">Web Server Recon</a></li>
+    <li><strong>ByteDrop #003:</strong> <a href="vault/003.html">Python Log Sniffer</a></li>
     </ul>
   </section>
 
   <section id="resources">
     <h2>Resources</h2>
     <ul>
-      <li><a href="#">Cybersecurity Basics</a></li>
-      <li><a href="#">Phishing Awareness</a></li>
-      <li><a href="#">Password Hygiene Tips</a></li>
+      <li><a href="/directory/resources.html#cybersecurity">Cybersecurity Basics</a></li>
+      <li><a href="/directory/resources.html#phishing">Phishing Awareness</a></li>
+      <li><a href="/directory/resources.html#passwords">Password Hygiene Tips</a></li>
     </ul>
   </section>
 
   <footer>
     <p>Byte10: A Steel Firewall — Powered by Genesee County</p>
+    <p>Created by <a href="http://clarencescott.github.io">Bio Glytch</a></p>
   </footer>
 
  <script>
-  function checkPythonAnswers() {
-    const selected = Array.from(document.querySelectorAll('input[name="code"]:checked')).map(el => el.value);
-    const correct = ['count', 'print'];
-
-    const isCorrect = correct.every(code => selected.includes(code)) && selected.length === 2;
-
-    const feedback = document.getElementById('feedback-python');
+  function checkHashAnswer() {
+    const selected = document.querySelector('input[name="hash"]:checked');
+    const feedback = document.getElementById('feedback-hash');
     feedback.style.display = 'block';
 
-    if (!isCorrect) {
-      feedback.innerHTML = `
-        <h3>🛠️ Almost There</h3>
-        <p>You selected: ${selected.join(', ')}</p>
-        <p>✅ The correct code was:</p>
-        <pre><code class="python">
-ip_counts[ip] = ip_counts.get(ip, 0) + 1
+    if (!selected) {
+      feedback.innerHTML = "<p>Please select an answer before submitting.</p>";
+      return;
+    }
 
-for ip in ip_counts:
-    if ip_counts[ip] > 1:
-        print(ip)
-        </code></pre>
-        <p>This logic is essential for log analysis and threat detection.</p>
+    if (selected.value === "password") {
+      feedback.innerHTML = `
+        <h3>✅ Correct!</h3>
+        <p>The hash <code>5f4dcc3b5aa765d61d8327deb882cf99</code> corresponds to the plaintext password <strong>password</strong>.</p>
+        <p>This is a well-known MD5 hash and highlights why weak passwords are dangerous.</p>
+      `;
+    } else {
+      feedback.innerHTML = `
+        <h3>❌ Not Quite</h3>
+        <p>The correct answer was <strong>password</strong>.</p>
+        <p>This hash is widely known and appears in many breach databases. Always use strong, unique passwords!</p>
       `;
     }
   }
 </script>
 
-<div id="popup" class="popup-box">
-  <div class="popup-content">
-    <h3>Thank you for clicking</h3>
-    <p>This link allowed us to steal your identity.</p>
-    <button onclick="closePopup()">Close</button>
-  </div>
-</div>
 </body>
 </html>
