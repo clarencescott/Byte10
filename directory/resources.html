@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Byte10: Resource Hub</title>
+  <link rel="shortcut icon" href="/byte10.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="byte10.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/assets/resourceStyling.css">
+  <script src="/src/scripts/nmap_scenario1.js"></script>
+</head>
+<body>
+<header>
+    <h1>Digital Resources</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  </header>
 
+  <nav id="sidebar">
+    <h2>Contents</h2>
+    <a href="http://byte10.vercel.app">Home</a>
+    <a href="#cybersecurity" onclick="toggleMenu()">Cybersecurity Basics</a>
+    <a href="#phishing" onclick="toggleMenu()">Phishing Awareness</a>
+    <a href="#passwords" onclick="toggleMenu()">Password Hygiene Tips</a>
+  </nav>
+
+  <main>
+    <section id="cybersecurity">
+      <h1>Cybersecurity Basics 🔐</h1>
+      <h2>What Is Cybersecurity?</h2>
+      <p>Cybersecurity refers to the practice of protecting systems, networks, and programs from digital attacks...</p>
+      <h2>⚠️ Common Threats</h2>
+      <ul>
+        <li>Malware: Malicious software designed to harm or exploit devices.</li>
+        <li>Ransomware: A type of malware that locks data until a ransom is paid.</li>
+        <li>Phishing: Fraudulent attempts to obtain sensitive information.</li>
+        <li>Data Breaches: Unauthorized access to confidential data.</li>
+      </ul>
+      <h2>✅ Best Practices</h2>
+      <ul>
+        <li>Keep software and systems updated.</li>
+        <li>Use strong, unique passwords.</li>
+        <li>Enable multi-factor authentication.</li>
+        <li>Regularly back up important data.</li>
+        <li>Educate employees and users on security awareness.</li>
+      </ul>
+      <h2>🛠️ Tools & Resources</h2>
+      <ul>
+        <li>Antivirus and anti-malware software</li>
+        <li>Firewalls and intrusion detection systems</li>
+        <li>Security awareness training platforms</li>
+        <li>Government and nonprofit cybersecurity guides</li>
+      </ul>
+    </section>
+
+    <section id="phishing">
+      <h1>Phishing Awareness 🎣</h1>
+      <h2>What Is Phishing?</h2>
+      <p>Phishing is a cybercrime where attackers impersonate legitimate entities...</p>
+      <h2>📬 Types of Phishing Attacks</h2>
+      <ul>
+        <li>Email Phishing</li>
+        <li>Spear Phishing</li>
+        <li>Smishing</li>
+        <li>Vishing</li>
+      </ul>
+      <h2>🔍 How to Spot Phishing</h2>
+      <ul>
+        <li>Suspicious sender addresses</li>
+        <li>Urgent or threatening language</li>
+        <li>Unexpected attachments or links</li>
+        <li>Requests for personal or financial information</li>
+      </ul>
+      <h2>🛡️ Prevention Tips</h2>
+      <ul>
+        <li>Never click on unknown links or attachments.</li>
+        <li>Verify sender identity before responding.</li>
+        <li>Use spam filters and email authentication tools.</li>
+        <li>Report phishing attempts to IT or cybersecurity teams.</li>
+      </ul>
+      <h2>📢 Reporting Phishing</h2>
+      <ul>
+        <li>Forward suspicious emails to your organization’s security team.</li>
+        <li>Use government reporting portals.</li>
+        <li>Alert others to prevent further attacks.</li>
+      </ul>
+    </section>
+
+    <section id="passwords">
+      <h1>Password Hygiene Tips 🔑</h1>
+      <h2>Why Passwords Matter</h2>
+      <p>Passwords are the first line of defense against unauthorized access...</p>
+      <h2>🧠 Characteristics of Strong Passwords</h2>
+      <ul>
+        <li>At least 12 characters long</li>
+        <li>Includes uppercase, lowercase, numbers, and symbols</li>
+        <li>Avoids dictionary words or personal info</li>
+        <li>Unique for each account</li>
+      </ul>
+      <h2>🧰 Password Management Tools</h2>
+      <ul>
+        <li>Password Managers: Bitwarden, LastPass, 1Password</li>
+        <li>Browser-integrated managers: Chrome, Firefox, Edge</li>
+      </ul>
+      <h2>🔐 Multi-Factor Authentication (MFA)</h2>
+      <ul>
+        <li>Adds an extra layer of security</li>
+        <li>Common methods: SMS codes, authenticator apps, biometrics</li>
+        <li>Recommended for email, banking, and cloud services</li>
+      </ul>
+      <h2>🚫 Common Mistakes to Avoid</h2>
+      <ul>
+        <li>Reusing passwords across accounts</li>
+        <li>Writing passwords on paper or sticky notes</li>
+        <li>Ignoring password change alerts</li>
+        <li>Sharing passwords via email or messaging apps</li>
+      </ul>
+      <div class="password-generator">
+  <h2>🔧 Generate a Strong Password</h2>
+  <div style="margin-bottom: 10px;">
+    <label for="length">Length:
+      <input type="number" id="length" value="16" min="8" max="64" />
+    </label>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <label><input type="checkbox" id="includeUppercase" checked /> Uppercase</label>
+    <label><input type="checkbox" id="includeLowercase" checked /> Lowercase</label>
+    <label><input type="checkbox" id="includeNumbers" checked /> Numbers</label>
+    <label><input type="checkbox" id="includeSymbols" checked /> Symbols</label>
+  </div>
+  <button onclick="generatePassword()">Generate Password</button>
+  <p><strong>Generated Password:</strong></p>
+  <pre id="passwordOutput"></pre><button onclick="copyPassword()" style="margin-top: 10px;">📋 Copy to Clipboard</button>
+
+</div>
+
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+  function generatePassword() {
+    const length = parseInt(document.getElementById('length').value);
+    const includeUppercase = document.getElementById('includeUppercase').checked;
+    const includeLowercase = document.getElementById('includeLowercase').checked;
+    const includeNumbers = document.getElementById('includeNumbers').checked;
+    const includeSymbols = document.getElementById('includeSymbols').checked;
+
+    const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lower = 'abcdefghijklmnopqrstuvwxyz';
+    const numbers = '0123456789';
+    const symbols = '!@#$%^&*()_+[]{}|;:,.<>?';
+
+    let charset = '';
+    if (includeUppercase) charset += upper;
+    if (includeLowercase) charset += lower;
+    if (includeNumbers) charset += numbers;
+    if (includeSymbols) charset += symbols;
+
+    if (!charset) {
+      document.getElementById('passwordOutput').textContent = 'Please select at least one character type.';
+      return;
+    }
+
+    let password = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length);
+      password += charset[randomIndex];
+    }
+
+    document.getElementById('passwordOutput').textContent = password;
+  }
+
+   function copyPassword() {
+    const password = document.getElementById('passwordOutput').textContent;
+    if (!password || password.includes('Please select')) return;
+
+    navigator.clipboard.writeText(password).then(() => {
+      alert('Password copied to clipboard!');
+    }).catch(err => {
+      alert('Failed to copy password.');
+    });
+  }
+
+  </script>
+
+</body>
+</html>
